@@ -1,0 +1,136 @@
+---
+const skills = [
+  {
+    category: "Frontend",
+    items: ["React", "Next.js", "Astro", "TypeScript", "TailwindCSS", "Vue.js"],
+    level: 92,
+    color: "#e8552a",
+  },
+  {
+    category: "Backend",
+    items: ["Node.js", "Python", "FastAPI", "Express", "GraphQL", "REST APIs"],
+    level: 85,
+    color: "#d4a843",
+  },
+  {
+    category: "Base de datos",
+    items: ["PostgreSQL", "MongoDB", "Redis", "MySQL", "Prisma", "Supabase"],
+    level: 80,
+    color: "#4a9eff",
+  },
+  {
+    category: "DevOps & Cloud",
+    items: ["Docker", "AWS", "CI/CD", "GitHub Actions", "Vercel", "Linux"],
+    level: 75,
+    color: "#22c55e",
+  },
+];
+
+const tools = [
+  "Git", "Figma", "VS Code", "Postman", "Jest", "Vitest",
+  "Webpack", "Vite", "pnpm", "Zod", "tRPC", "Storybook"
+];
+---
+
+<section id="habilidades" class="py-32 px-8 md:px-16 bg-[#0d0d12] relative">
+
+  <!-- Section label -->
+  <div class="flex items-center gap-4 mb-16">
+    <div class="w-12 h-px bg-accent"></div>
+    <span class="font-mono text-xs tracking-[0.3em] uppercase text-accent">Habilidades</span>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+    <!-- Left: Heading -->
+    <div>
+      <h2 class="font-display text-[11vw] md:text-[6vw] leading-none text-paper mb-6">
+        STACK &<br /><span class="text-stroke">SKILLS</span>
+      </h2>
+      <p class="text-paper/50 max-w-sm leading-relaxed">
+        Me especializo en el desarrollo full stack moderno, con enfoque en la
+        experiencia de usuario, el rendimiento y la escalabilidad.
+      </p>
+
+      <!-- Tools cloud -->
+      <div class="mt-12">
+        <p class="font-mono text-xs tracking-widest uppercase text-paper/30 mb-6">Herramientas</p>
+        <div class="flex flex-wrap gap-3">
+          {tools.map(tool => (
+            <span class="font-mono text-xs text-paper/40 px-3 py-1.5 border border-paper/10 hover:border-accent hover:text-accent transition-all duration-300 cursor-default">
+              {tool}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Skill bars -->
+    <div class="space-y-10">
+      {skills.map((skill, i) => (
+        <div class="skill-item opacity-0" style={`animation: fadeUp 0.6s ease forwards; animation-delay: ${i * 0.15}s;`}>
+          <div class="flex justify-between items-end mb-3">
+            <div>
+              <h3 class="font-serif text-xl text-paper mb-1">{skill.category}</h3>
+              <p class="font-mono text-xs text-paper/40">
+                {skill.items.join(" · ")}
+              </p>
+            </div>
+            <span
+              class="font-display text-3xl"
+              style={`color: ${skill.color}`}
+            >
+              {skill.level}
+            </span>
+          </div>
+          <!-- Bar -->
+          <div class="h-px bg-paper/10 relative overflow-hidden">
+            <div
+              class="absolute top-0 left-0 h-full transition-all duration-1000 ease-out skill-bar"
+              style={`background-color: ${skill.color}; width: 0%; --target-width: ${skill.level}%`}
+            ></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  // Animate skill bars on scroll
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const bars = entry.target.querySelectorAll(".skill-bar");
+          bars.forEach((bar) => {
+            const target = (bar as HTMLElement).style.getPropertyValue("--target-width");
+            setTimeout(() => {
+              (bar as HTMLElement).style.width = target;
+            }, 300);
+          });
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
+
+  const section = document.getElementById("habilidades");
+  if (section) observer.observe(section);
+
+  // Animate skill items on scroll
+  const itemObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          (entry.target as HTMLElement).style.opacity = "1";
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  document.querySelectorAll(".skill-item").forEach((el) => {
+    itemObserver.observe(el);
+  });
+</script>

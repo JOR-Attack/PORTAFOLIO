@@ -1,0 +1,29 @@
+---
+const items = [
+  "React", "·", "Astro", "·", "TypeScript", "·",
+  "Node.js", "·", "TailwindCSS", "·", "Next.js", "·",
+  "PostgreSQL", "·", "Docker", "·", "GraphQL", "·"
+];
+---
+
+<div class="overflow-hidden bg-accent py-3 relative">
+  <div class="marquee flex gap-8 whitespace-nowrap">
+    {[...items, ...items].map((item, i) => (
+      <span key={i} class={`font-display text-sm tracking-widest text-paper ${item === '·' ? 'text-paper/40' : ''}`}>
+        {item}
+      </span>
+    ))}
+  </div>
+</div>
+
+<style>
+  @keyframes marquee {
+    from { transform: translateX(0) }
+    to { transform: translateX(-50%) }
+  }
+  .marquee {
+    animation: marquee 20s linear infinite;
+    display: inline-flex;
+    width: max-content;
+  }
+</style>

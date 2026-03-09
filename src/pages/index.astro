@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Hero from "../components/Hero.astro";
+import Marquee from "../components/Marquee.astro";
+import About from "../components/About.astro";
+import Projects from "../components/Projects";
+import Skills from "../components/Skills.astro";
+import Contact from "../components/Contact";
+---
+
+<BaseLayout title="Portfolio — Alex Dev · Full Stack Developer">
+  <Nav />
+  <main>
+    <Hero />
+    <Marquee />
+    <About />
+    <Projects client:load />
+    <Skills />
+    <Contact client:load />
+  </main>
+</BaseLayout>
+
+<style>
+  /* Smooth scroll offset for fixed nav */
+  :global(section[id]) {
+    scroll-margin-top: 80px;
+  }
+</style>

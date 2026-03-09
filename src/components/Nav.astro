@@ -1,0 +1,88 @@
+---
+const links = [
+  { href: "#sobre-mi", label: "Sobre mí" },
+  { href: "#proyectos", label: "Proyectos" },
+  { href: "#habilidades", label: "Skills" },
+  { href: "#contacto", label: "Contacto" },
+];
+---
+
+<nav
+  class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-5 mix-blend-difference"
+  id="navbar"
+>
+  <a href="/" class="font-display text-2xl tracking-widest text-paper">
+    DEV.
+  </a>
+  <ul class="hidden md:flex items-center gap-10">
+    {
+      links.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class="font-mono text-xs tracking-[0.2em] uppercase text-paper/70 hover:text-paper transition-colors duration-300 relative group"
+          >
+            {link.label}
+            <span class="absolute -bottom-1 left-0 w-0 h-px bg-accent group-hover:w-full transition-all duration-300" />
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  <button
+    id="menu-toggle"
+    class="md:hidden flex flex-col gap-1.5 p-2"
+    aria-label="Menu"
+  >
+    <span class="w-6 h-px bg-paper block transition-all duration-300" id="line1"></span>
+    <span class="w-6 h-px bg-paper block transition-all duration-300" id="line2"></span>
+    <span class="w-4 h-px bg-paper block transition-all duration-300" id="line3"></span>
+  </button>
+</nav>
+
+<!-- Mobile Menu -->
+<div
+  id="mobile-menu"
+  class="fixed inset-0 z-40 bg-ink flex flex-col justify-center items-center gap-10 translate-x-full transition-transform duration-500 ease-in-out"
+>
+  {
+    links.map((link, i) => (
+      <a
+        href={link.href}
+        class="font-display text-5xl tracking-widest text-paper hover:text-accent transition-colors mobile-link"
+        style={`animation-delay: ${i * 0.1}s`}
+      >
+        {link.label.toUpperCase()}
+      </a>
+    ))
+  }
+</div>
+
+<script>
+  const toggle = document.getElementById("menu-toggle")!;
+  const menu = document.getElementById("mobile-menu")!;
+  const line1 = document.getElementById("line1")!;
+  const line2 = document.getElementById("line2")!;
+  const line3 = document.getElementById("line3")!;
+  let open = false;
+
+  toggle.addEventListener("click", () => {
+    open = !open;
+    menu.style.transform = open ? "translateX(0)" : "translateX(100%)";
+    line1.style.transform = open ? "rotate(45deg) translate(4px, 4px)" : "";
+    line2.style.opacity = open ? "0" : "1";
+    line3.style.transform = open ? "rotate(-45deg) translate(4px, -4px)" : "";
+    line3.style.width = open ? "24px" : "16px";
+  });
+
+  document.querySelectorAll(".mobile-link").forEach((link) => {
+    link.addEventListener("click", () => {
+      open = false;
+      menu.style.transform = "translateX(100%)";
+      line1.style.transform = "";
+      line2.style.opacity = "1";
+      line3.style.transform = "";
+      line3.style.width = "16px";
+    });
+  });
+</script>
