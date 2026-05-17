@@ -11,28 +11,28 @@ const projects = [
       "Plataforma de comercio electrónico con carrito en tiempo real, pasarela de pagos y panel de administración.",
     tech: ["Next.js", "TypeScript", "Stripe", "PostgreSQL"],
     color: "#e8552a",
-    link: "#",
+    link: "https://e-comerceyork.netlify.app/",
   },
   {
     id: 2,
     number: "002",
-    title: "Dashboard Analytics",
+    title: "Gym Combarranquilla",
     category: "Frontend",
     year: "2024",
     description:
-      "Dashboard interactivo con visualizaciones de datos en tiempo real, filtros avanzados y reportes exportables.",
+      "Plataforma del Gym Combarranquilla con sistema de login, administracion de usuarios, sistema de valoraciones, planes de entrenamiento y exportacion de datos en formato pdf.",
     tech: ["React", "D3.js", "TailwindCSS", "FastAPI"],
     color: "#d4a843",
-    link: "#",
+    link: "https://york-company.site/",
   },
   {
     id: 3,
     number: "003",
-    title: "App Móvil Social",
+    title: "App Móvil Juego Social",
     category: "Mobile",
     year: "2023",
     description:
-      "Red social para fotógrafos con feed infinito, sistema de seguidores y galería personalizada.",
+      "Juego social para divertirse en una reunion con amigos y familiares.",
     tech: ["React Native", "Node.js", "MongoDB", "AWS S3"],
     color: "#4a9eff",
     link: "#",
@@ -40,26 +40,25 @@ const projects = [
   {
     id: 4,
     number: "004",
-    title: "CMS Headless",
-    category: "Full Stack",
+    title: "NBA Stars",
+    category: "Frontend",
     year: "2023",
-    description:
-      "Sistema de gestión de contenidos headless con API REST, roles de usuario y preview en vivo.",
+    description: "WebSite los mejores jugadores de la liga de la NBA.",
     tech: ["Astro", "Strapi", "GraphQL", "Redis"],
     color: "#8b5cf6",
-    link: "#",
+    link: "https://basquetball-players.netlify.app/",
   },
   {
     id: 5,
     number: "005",
-    title: "CLI Dev Tools",
+    title: "E-Commerce Mobile Platform",
     category: "Backend",
     year: "2023",
     description:
       "Suite de herramientas CLI para automatizar flujos de trabajo de desarrollo, deploy y generación de código.",
     tech: ["Node.js", "TypeScript", "Docker", "GitHub Actions"],
     color: "#22c55e",
-    link: "#",
+    link: "https://yorkapimobile.netlify.app/",
   },
 ];
 
@@ -131,9 +130,7 @@ export default function Projects() {
 
             <div className="flex items-start md:items-center gap-6 md:gap-12 flex-1">
               {/* Number */}
-              <span
-                className="font-mono text-xs text-paper/20 group-hover:text-paper/40 transition-colors shrink-0 mt-1 md:mt-0"
-              >
+              <span className="font-mono text-xs text-paper/20 group-hover:text-paper/40 transition-colors shrink-0 mt-1 md:mt-0">
                 {project.number}
               </span>
 
@@ -146,8 +143,14 @@ export default function Projects() {
                   <span
                     className="font-mono text-[10px] tracking-widest uppercase px-2 py-1 border w-fit transition-colors duration-300"
                     style={{
-                      borderColor: hovered === project.id ? project.color : "rgba(245,240,232,0.2)",
-                      color: hovered === project.id ? project.color : "rgba(245,240,232,0.4)",
+                      borderColor:
+                        hovered === project.id
+                          ? project.color
+                          : "rgba(245,240,232,0.2)",
+                      color:
+                        hovered === project.id
+                          ? project.color
+                          : "rgba(245,240,232,0.4)",
                     }}
                   >
                     {project.category}
@@ -164,7 +167,10 @@ export default function Projects() {
               {/* Tech stack */}
               <div className="hidden lg:flex flex-wrap gap-2">
                 {project.tech.map((t) => (
-                  <span key={t} className="font-mono text-[10px] tracking-wider text-paper/30">
+                  <span
+                    key={t}
+                    className="font-mono text-[10px] tracking-wider text-paper/30"
+                  >
                     {t}
                   </span>
                 ))}
@@ -177,7 +183,9 @@ export default function Projects() {
               {/* Arrow */}
               <div
                 className="w-10 h-10 border border-paper/20 group-hover:border-current flex items-center justify-center transition-all duration-300 group-hover:translate-x-1 shrink-0"
-                style={{ color: hovered === project.id ? project.color : undefined }}
+                style={{
+                  color: hovered === project.id ? project.color : undefined,
+                }}
               >
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                   <path
