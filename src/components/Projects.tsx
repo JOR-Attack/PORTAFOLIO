@@ -117,6 +117,8 @@ export default function Projects() {
         {filtered.map((project, i) => (
           <a
             href={project.link}
+            target={project.link.startsWith("http") ? "_blank" : ""}
+            rel="noopener noreferrer"
             key={project.id}
             onMouseEnter={() => setHovered(project.id)}
             onMouseLeave={() => setHovered(null)}
