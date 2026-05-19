@@ -4,14 +4,14 @@ const projects = [
   {
     id: 1,
     number: "001",
-    title: "E-Commerce Platform",
-    category: "Full Stack",
+    title: "Dame Ramen Restaurant",
+    category: "Frontend",
     year: "2024",
     description:
-      "Plataforma de comercio electrónico con carrito en tiempo real, pasarela de pagos y panel de administración.",
-    tech: ["Next.js", "TypeScript", "Stripe", "PostgreSQL"],
-    color: "#e8552a",
-    link: "https://e-comerceyork.netlify.app/",
+      "Landing page descriptiva para una cadena de restaurantes (Dame Ramen)",
+    tech: ["React", "Node.js", "TailwindCSS", "Motions"],
+    color: "#4a9eff",
+    link: "https://dame-ramen.netlify.app/",
   },
   {
     id: 2,
@@ -28,14 +28,14 @@ const projects = [
   {
     id: 3,
     number: "003",
-    title: "App Móvil Juego Social",
-    category: "Mobile",
-    year: "2023",
+    title: "E-Commerce Platform",
+    category: "Full Stack",
+    year: "2024",
     description:
-      "Juego social para divertirse en una reunion con amigos y familiares.",
-    tech: ["React Native", "Node.js", "MongoDB", "AWS S3"],
-    color: "#4a9eff",
-    link: "#",
+      "Plataforma de comercio electrónico con carrito en tiempo real, pasarela de pagos y panel de administración.",
+    tech: ["Next.js", "TypeScript", "Stripe", "PostgreSQL"],
+    color: "#e8552a",
+    link: "https://e-comerceyork.netlify.app/",
   },
   {
     id: 4,
